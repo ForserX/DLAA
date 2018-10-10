@@ -4,7 +4,7 @@
 # Use
 * DirectX9
 ```hlsl 
-// Replace 'screen_res' to your screen variable or use standating PIXEL_SIZE
+// Replace 'screen_res' to your screen variable or use default PIXEL_SIZE
 #define PIXEL_SIZE screen_res.zw
 
 // Only for DirectX9 Shaders
@@ -20,7 +20,7 @@ float4 main(p_screen I) : COLOR
 ```
 * DirectX10 / DirectX11
 ```hlsl 
-// Replace 'screen_res' to your screen variable or use standating PIXEL_SIZE
+// Replace 'screen_res' to your screen variable or use default PIXEL_SIZE
 #define PIXEL_SIZE screen_res.zw
 
 // Include DLAA

@@ -1,20 +1,20 @@
 // Directionally Localized antiAliasing
 // Original ver: facepuncherfromrussia (2011)
-// Update   ver: ForserX (2018) 
+// Update   ver: ForserX (2018-2019) 
 
 // New: New Luminance code
 
-#ifndef PIXEL_SIZE
-#define PIXEL_SIZE float2(1.0/1280, 1.0/720)
-#endif
+#ifndef DLAA_H
+#define DLAA_H
 
 #ifdef DX9Ver
 #define LD(o, dx, dy) o = tex2D(s_image, tc + float2(dx, dy) * PIXEL_SIZE.xy);
 #else
-#define LD(o, dx, dy) o = s_image.Sample(smp_rtlinear, tc + float2(dx, dy) * PIXEL_SIZE.xy);
+#define LD(o, dx, dy) o = s_image.Sample(smp_rtlinear, tc + float2(dx, dy) * ImageSize.xy);
 #endif
 
 static const bool bPreserveHf = 0;
+static float2 ImageSize = 0;
 
 // sRGB primaries and D65 white point
 inline float Luminance(float3 rgb)
@@ -44,7 +44,7 @@ float4 PreProcessPS(float2 tc)
 }
 
 
-float4 DLAAPixelShader(float2 tc)
+float4 DLAAPixelShader(float2 tc, float2 fImageSize)
 {
     const float lambda = 3.0f;
     const float epsilon = 0.1f;
@@ -161,3 +161,5 @@ float4 DLAAPixelShader(float2 tc)
 	}
 	return clr;
 }
+
+#endif

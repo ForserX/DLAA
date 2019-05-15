@@ -1,34 +1,23 @@
 # -DLAA-Directionally-Localized-antiAliasing
-(DLAA) Directionally Localized antiAliasing 
+(DLAA) Directionally Localized antiAliasing. 
+### Support 
+* Dx10
+* Dx10.1
+* Dx11
+* Dx12 
 
 # Use
-* DirectX9
 ```hlsl 
-// Replace 'screen_res' to your screen variable or use default PIXEL_SIZE
-#define PIXEL_SIZE screen_res.zw
-
-// Only for DirectX9 Shaders
-#define DX9Ver
+// Replace 'screen_res' to your screen size variable
 
 // Include DLAA
-#include "dlaa.h"
-
-float4 main(p_screen I) : COLOR
-{
-	return DLAAPixelShader(I.tc0);
-}
-```
-* DirectX10 / DirectX11
-```hlsl 
-// Replace 'screen_res' to your screen variable or use default PIXEL_SIZE
-#define PIXEL_SIZE screen_res.zw
-
-// Include DLAA
-#include "dlaa.h"
+#include "dlaa.hlsl"
 
 float4 main(p_screen I) : SV_Target
 {
-	return DLAAPixelShader(I.tc0);
+	// Z - Image width | W - Image height
+	float2 fSize  = screen_res.zw;
+	return DLAAPixelShader(I.tc0, fSize);
 }
 ```
 # Another Settings

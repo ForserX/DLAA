@@ -7,14 +7,14 @@
 #ifndef DLAA_H
 #define DLAA_H
 
+static const bool bPreserveHf = 0;
+static float2 ImageSize = float2(1200.0f, 720.0f);
+
 #ifdef DX9Ver
 #define LD(o, dx, dy) o = tex2D(s_image, tc + float2(dx, dy) * PIXEL_SIZE.xy);
 #else
 #define LD(o, dx, dy) o = s_image.Sample(smp_rtlinear, tc + float2(dx, dy) * ImageSize.xy);
 #endif
-
-static const bool bPreserveHf = 0;
-static float2 ImageSize = 0;
 
 // sRGB primaries and D65 white point
 inline float Luminance(float3 rgb)

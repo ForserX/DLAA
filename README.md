@@ -1,5 +1,7 @@
-# -DLAA-Directionally-Localized-antiAliasing
-(DLAA) Directionally Localized antiAliasing. 
+# DLAA: Directionally Localized antiAliasing
+DLAA it's fasted aa shader.
+2011-2022 (C) 
+
 ### Support 
 * Dx10
 * Dx10.1
@@ -29,3 +31,6 @@ float4 main(p_screen I) : SV_Target
 ```cpp
 #define TFU2_HIGH_PASS
 ```
+# Contrib 
+* facepuncherfromrussia  
+* ForserX
